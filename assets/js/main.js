@@ -212,3 +212,68 @@
     });
   });
 })(jQuery);
+
+
+// vc slide section 2
+const slider = document.querySelector('.slider2');
+const leftArrow = document.querySelector('.left');
+const rigthArrow = document.querySelector('.right');
+const indicatorParents = document.querySelector('#ul');
+// console.log(indicatorParents.children);
+var sectionIndex = 0;
+
+function setIndex(index) {
+  slider.style.transform = 'translate(' + (index) * -25 + '%)';
+  document.querySelector('.controls .selected').classList.remove('selected');
+}
+
+document.querySelectorAll('.controls li').forEach(function(indicator, ind) {
+  indicator.addEventListener('click', function() {
+    sectionIndex = ind;
+    setIndex(sectionIndex);
+    indicator.classList.add('selected');
+  });
+});
+
+leftArrow.addEventListener('click', function(){
+  sectionIndex = (sectionIndex > 0) ? sectionIndex - 1 : 0;
+  setIndex(sectionIndex);
+  indicatorParents.children[sectionIndex].classList.add('selected');
+});
+
+rigthArrow.addEventListener('click', function(){
+  sectionIndex = (sectionIndex < indicatorParents.children.length - 1) ? sectionIndex + 1 : indicatorParents.children.length - 1;
+  setIndex(sectionIndex);
+  indicatorParents.children[sectionIndex].classList.add('selected');
+});
+
+// --------2-------
+document.addEventListener("DOMContentLoaded", function() {
+  // function prevSlide() {
+  //   // leftArrow.click();
+  //   sectionIndex = (sectionIndex > 0) ? sectionIndex - 1 : 0;
+  //   setIndex(sectionIndex);
+  //   indicatorParents.children[sectionIndex].classList.add('selected');
+  // }
+
+  function nextSlide() {
+    // while (true) {
+    //   sectionIndex = (sectionIndex === indicatorParents.children.length - 1) ? sectionIndex - 1 : 0;
+    //   setIndex(sectionIndex);
+    //   indicatorParents.children[sectionIndex].classList.add('selected');
+    // }
+    sectionIndex = (sectionIndex < indicatorParents.children.length - 1) ? sectionIndex + 1 : indicatorParents.children.length - 1;
+    setIndex(sectionIndex);
+    indicatorParents.children[sectionIndex].classList.add('selected');
+  }
+  
+  // if (sectionIndex === indicatorParents.children.length - 1) {
+  //   // sectionIndex = 0;
+  //   setInterval(prevSlide, 10000);
+  // }
+  
+  setInterval(nextSlide, 10000);
+  
+  // sectionIndex = (sectionIndex === indicatorParents.children.length - 1) ? 0 : indicatorParents.children.length - 1;
+});
+// console.log(indicatorParents.children.length);

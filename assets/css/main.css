@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&amp;display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 
 /* #ef9d10, #9b2a1b, #ef9d10,  */
@@ -2559,6 +2560,10 @@ header.active {
     top: 0;
     right: 0;
     background: rgba(7, 41, 77, 0.93);
+}
+
+.banner-overlay.lighter::before {
+    background: rgba(7, 41, 77, 0.707);
 }
 
 .banner-content {
@@ -6408,3 +6413,144 @@ blockquote::before {
 .all-sections {
     overflow: hidden;
 }
+
+
+/* vc slide / banner section */
+.slider-wrapper {
+    position: relative;
+    width: 100vw;
+    margin: 0 auto;
+    height: 80vh;
+}
+
+.slider {
+    height: 80vh;
+    display: flex;
+    /* aspect-ratio: 16/9; */
+    overflow-x: hidden;
+    /* overflow-x: auto; */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem  -0.75rem hsla(0, 0%, 0%, 0.25);
+    /* animation: scroll 40s linear infinite; */
+}
+
+/* @keyframes scroll {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(calc(100vw * 3));}
+} */
+
+.slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
+
+.banner-writeup {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+}
+
+@media screen and (max-width: 480px) {
+    .banner-writeup {
+        bottom: 10%;
+        left: 3%;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .banner-writeup {
+        bottom: 10%;
+        left: 3%;
+    }
+    .banner-writeup .subtitle {
+        margin-bottom: -19px !important;
+    }
+    .banner-writeup .title {
+        font-size: 25px !important;
+        margin-block: 7px !important;
+    }
+    .banner-writeup .banner-button-area a {
+        font-size: 12px !important;
+        padding: 0 20px !important;
+    }
+    .banner-writeup .banner-button-area a i {
+        display: none;
+    }
+}
+
+.carousel {
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider2 {
+    height: 100%;
+    display: flex;
+    width: 400%;
+    transition: all .3s;
+}
+
+.slider2 section {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.controls .arrow span {
+    font-size: 60px;
+    color: #b3d4fc34;
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
+}
+
+.controls ul {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.controls ul li {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #b3d4fc;
+    border-radius: 50px;
+    margin: 10px;
+    background: #b3d4fc;
+    cursor: pointer;
+}
+
+.controls ul li.selected {
+    background: transparent;
+}
+
+
+.slide {
+    display: none;
+}
+
+.slide:first-child {
+    display: block;
+}
+/* end of slide / banner section */
